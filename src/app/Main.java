@@ -13,23 +13,28 @@ public class Main {
                 return a + b;
             }
         };
-        System.out.println("   5 + 3 = " + add.operate(5, 3) + "\n");
+        System.out.println("\t5 + 3 = " + add.operate(5, 3) + "\n");
 
         // 2. Lambda - StringManipulator
         System.out.println("2. StringManipulator (Lambda):");
         StringManipulator toUpperCase = input -> input.toUpperCase();
-        System.out.println("   \"hello world\" -> \"" + toUpperCase.manipulate("hello world") + "\"\n");
+        System.out.println("\t\"hello world\" -> \"" + toUpperCase.manipulate("hello world") + "\"\n");
 
-        // 3. Method reference - Function
-        System.out.println("3. StringListProcessor (Method Reference):");
+        // 3. Method reference - StringManipulator
+        System.out.println("3. StringManipulator (Method Reference):");
+        StringManipulator toLowerCase = String::toLowerCase;
+        System.out.println("\t\"HELLO WORLD\" -> \"" + toLowerCase.manipulate("HELLO WORLD") + "\"\n");
+
+        // 4. Method reference - Function
+        System.out.println("4. StringListProcessor (Method Reference):");
         Function<String, Integer> counter = StringListProcessor::countUppercase;
-        System.out.println("   \"Hello World\" has " + counter.apply("Hello World") + " uppercase letters\n");
+        System.out.println("\t\"Hello World\" has " + counter.apply("Hello World") + " uppercase letters\n");
 
-        // 4. Supplier
-        System.out.println("4. RandomNumberGenerator (Supplier):");
+        // 5. Supplier
+        System.out.println("5. RandomNumberGenerator (Supplier):");
         Supplier<Integer> randomSupplier = () -> RandomNumberGenerator.generateRandomNumber(20, 50);
         for (int i = 1; i <= 3; i++) {
-            System.out.println("   Random #" + i + ": " + randomSupplier.get());
+            System.out.println("\tRandom #" + i + ": " + randomSupplier.get());
         }
     }
 }
